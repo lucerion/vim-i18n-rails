@@ -112,7 +112,7 @@ Enable/disable auto preview (open a file on 'j' or 'k' press).
 Default: 0
 
 ===============================================================================
-CHANGELOG                                               *vim-extract-changelog*
+CHANGELOG                                            *vim-i18n-rails-changelog*
 
 0.1.0 (2017-01-02)~
   First release
