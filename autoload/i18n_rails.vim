@@ -53,8 +53,8 @@ func! i18n_rails#all_translations(selection_length)
   if s:is_empty(l:translations)
     call s:error('translation', l:locale_key)
   else
-    call setqflist(l:translations)
-    silent! exec 'copen'
+    call setloclist(0, l:translations, 'r')
+    silent! exec 'lopen'
     call s:apply_default_mappings()
   endif
 endfunc
@@ -241,7 +241,7 @@ endfunc
 
 func! s:apply_default_mappings()
   if g:i18n_rails_use_default_mappings
-    nnoremap <buffer> <silent> q :cclose<CR>
+    nnoremap <buffer> <silent> q :lclose<CR>
     for mapping in items(g:i18n_rails_mappings)
       exec 'nnoremap <buffer> <silent>' . ' ' .
         \ get(mapping, 0) . ' ' . get(mapping, 1)
