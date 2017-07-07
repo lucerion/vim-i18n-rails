@@ -1,4 +1,4 @@
-*vim-i18n-rails.txt*    Vim plugin for working with Rails I18n
+*vim-i18n-rails.txt*    Vim plugin for Rails I18n
 
 Author:               Alexander Skachko <alexander.skachko@gmail.com>
 Homepage:             https://github.com/lucerion/vim-i18n-rails

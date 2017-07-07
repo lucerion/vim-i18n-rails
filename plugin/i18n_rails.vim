@@ -1,22 +1,21 @@
 " ==============================================================
-" Description:  Vim plugin for working with Rails I18n
+" Description:  Vim plugin for Rails I18n
 " Author:       Alexander Skachko <alexander.skachko@gmail.com>
 " Homepage:     https://github.com/lucerion/vim-i18n-rails
 " Version:      0.1.0 (2017-01-02)
 " Licence:      BSD-3-Clause
 " ==============================================================
 
-if exists('g:loaded_i18n_rails') || &compatible || v:version < 700 ||
-    \ !has('ruby')
+if exists('g:loaded_i18n_rails') || &compatible || v:version < 700 || !has('ruby')
   finish
 endif
 
-if !exists('g:i18n_rails_default_locale_file')
-  let g:i18n_rails_default_locale_file = ''
+if !exists('g:i18n_rails_default_locale')
+  let g:i18n_rails_default_locale = ''
 endif
 
-if !exists('g:I18n_rails_default_position')
-  let g:I18n_rails_default_position = 'tab'
+if !exists('g:i18n_rails_default_position')
+  let g:i18n_rails_default_position = 'tab'
 endif
 
 let s:default_mappings = {
@@ -50,15 +49,12 @@ func! s:autocompletion(A, L, C)
 endfunc
 
 func! s:init_commands()
-  comm! -nargs=0 -range I18nTranslation
-    \ call i18n_rails#translation(<count>)
-  comm! -nargs=0 -range I18nAllTranslations
-    \ call i18n_rails#all_translations(<count>)
-  comm! -nargs=? -range -complete=customlist,s:autocompletion I18nGoToDefinition
-    \ call i18n_rails#goto_definition(<count>, <f-args>)
+  comm! -nargs=0 -range I18nTranslation call i18n_rails#translation(<count>)
+  comm! -nargs=0 -range I18nAllTranslations call i18n_rails#translations(<count>)
+  comm! -nargs=? -range -complete=customlist,s:autocompletion I18nOpen call i18n_rails#open(<count>, <f-args>)
 endfunc
 
-augroup I18n_rails_commands
+augroup I18nRailsCommands
   autocmd!
   autocmd FileType ruby,eruby,haml,slim,javascript,coffee call s:init_commands()
 augroup END
