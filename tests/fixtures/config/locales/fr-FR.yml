@@ -1,0 +1,7 @@
+fr-FR:
+  user:
+    first_name: Prénom
+    last_name: Nom
+    address:
+      country: Pays
+      city: Stadt

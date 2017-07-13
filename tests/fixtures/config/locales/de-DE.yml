@@ -1,0 +1,7 @@
+de-DE:
+  user:
+    first_name: Vorname
+    last_name: Nachname
+    address:
+      country: Land
+      city: Ville

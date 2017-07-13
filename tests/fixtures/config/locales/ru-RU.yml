@@ -1,0 +1,7 @@
+de-DE:
+  user:
+    first_name: Имя
+    last_name: Фамилия
+    address:
+      country: Страна
+      city: Город
