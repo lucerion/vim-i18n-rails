@@ -2,7 +2,7 @@
 " Description:  Vim plugin for working with Rails I18n
 " Author:       Alexander Skachko <alexander.skachko@gmail.com>
 " Homepage:     https://github.com/lucerion/vim-i18n-rails
-" Version:      0.1.0 (2017-01-02)
+" Version:      0.2.0 (2017-07-14)
 " Licence:      BSD-3-Clause
 " ==============================================================
 

@@ -114,6 +114,13 @@ Default: 0
 ===============================================================================
 CHANGELOG                                            *vim-i18n-rails-changelog*
 
+0.2.0 (2017-07-14)~
+  Changes
+    * code refactoring - use ruby for parsing yaml only
+    * rename i18n_rails#goto_definition to i18n_rails#open command
+    * rename g:i18n_rails_default_locale_file to g:i18n_rails_default_locale
+    * fix g:i18n_rails_default_position usage
+
 0.1.0 (2017-01-02)~
   First release
 
