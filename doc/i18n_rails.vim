@@ -52,9 +52,9 @@ COMMANDS                                              *vim-i18n-rails-commands*
 :I18nAllTranslations                  Open quickfix window with translations
                                       by all locales.
 
-                                                          *:I18nGoToDefinition*
+                                                                    *:I18nOpen*
 
-:I18nGoToDefinition {position}        Open locale file on line with
+:I18nOpen {position}                  Open locale file on line with
                                       translation.
                                       Possible {position} value: 'current',
                                       'top', 'bottom', 'left', 'right', 'tab'
@@ -62,9 +62,9 @@ COMMANDS                                              *vim-i18n-rails-commands*
 ===============================================================================
 OPTIONS                                                *vim-i18n-rails-options*
 
-                                             *g:i18n_rails_default_locale_file*
+                                                  *g:i18n_rails_default_locale*
 
-Default locale file.
+Name of default locale.
 Default: ''
 
                                                 *g:I18n_rails_default_position*
