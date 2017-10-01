@@ -2,8 +2,8 @@
 
 Author:               Alexander Skachko <alexander.skachko@gmail.com>
 Homepage:             https://github.com/lucerion/vim-i18n-rails
-Version:              0.1.0 (2017-01-02)
-Licence:              BSD-3-Clause (see LICENSE)
+Version:              0.2.0 (2017-01-02)
+Licence:              BSD-3-Clause (see vim-i18n-rails-license)
 
 ===============================================================================
 CONTENTS                                                       *vim-i18n-rails*

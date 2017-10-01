@@ -9,6 +9,7 @@
 if exists('g:loaded_i18n_rails') || &compatible || v:version < 700 || !has('ruby')
   finish
 endif
+let g:loaded_i18n_rails = 1
 
 if !exists('g:i18n_rails_default_locale')
   let g:i18n_rails_default_locale = ''
@@ -44,8 +45,9 @@ if !exists('g:i18n_rails_translations_autopreview')
   let g:i18n_rails_translations_autopreview = 0
 endif
 
-func! s:autocompletion(A, L, C)
-  return ['current', 'top', 'bottom', 'left', 'right', 'tab']
+func! s:autocompletion(input, command_line, cursor_position) abort
+  let l:positions = ['current', 'top', 'bottom', 'left', 'right', 'tab']
+  return filter(l:positions, 'v:val =~ a:input')
 endfunc
 
 func! s:init_commands()
@@ -58,5 +60,3 @@ augroup I18nRailsCommands
   autocmd!
   autocmd FileType ruby,eruby,haml,slim,javascript,coffee call s:init_commands()
 augroup END
-
-let g:loaded_i18n_rails = 1

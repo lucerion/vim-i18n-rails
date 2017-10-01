@@ -8,22 +8,22 @@
 
 let s:positions = {
   \ 'current': 'edit',
-  \ 'top': 'leftabove split',
-  \ 'bottom': 'rightbelow split',
-  \ 'left': 'vertical leftabove split',
-  \ 'right': 'vertical rightbelow split',
-  \ 'tab': 'tab split'
+  \ 'top':     'leftabove split',
+  \ 'bottom':  'rightbelow split',
+  \ 'left':    'vertical leftabove split',
+  \ 'right':   'vertical rightbelow split',
+  \ 'tab':     'tab split'
   \ }
 let s:default_position = s:positions.tab
 
 let s:errors_messages = {
-  \ 'directory': "Directory '{directory}' does not exists!",
-  \ 'file': "File '{file}' does not exists!",
-  \ 'locale_key': 'Key can not be empty!',
+  \ 'directory':   "Directory '{directory}' does not exists!",
+  \ 'file':        "File '{file}' does not exists!",
+  \ 'locale_key':  'Key can not be empty!',
   \ 'translation': "Translation '{locale_key}' not found!"
   \ }
 
-func! i18n_rails#translation(has_selection)
+func! i18n_rails#translation(has_selection) abort
   let l:locale_directory = s:locale_directory()
   if !isdirectory(l:locale_directory)
     call s:show_error(s:errors_messages.directory, { 'directory': l:locale_directory }) | return
@@ -47,7 +47,7 @@ func! i18n_rails#translation(has_selection)
   endif
 endfunc
 
-func! i18n_rails#translations(has_selection)
+func! i18n_rails#translations(has_selection) abort
   let l:locale_directory = s:locale_directory()
   if !isdirectory(l:locale_directory)
     call s:show_error(s:errors_messages.directory, { 'directory': l:locale_directory }) | return
@@ -68,7 +68,7 @@ func! i18n_rails#translations(has_selection)
   endif
 endfunc
 
-func! i18n_rails#open(has_selection, ...)
+func! i18n_rails#open(has_selection, ...) abort
   let l:locale_directory = s:locale_directory()
   if !isdirectory(l:locale_directory)
     call s:show_error(s:errors_messages.directory, { 'directory': l:locale_directory }) | return
@@ -93,7 +93,7 @@ func! i18n_rails#open(has_selection, ...)
   endif
 endfunc
 
-func! s:translation(locale_file, locale_key)
+func! s:translation(locale_file, locale_key) abort
   let l:locale_key = s:full_locale_key(a:locale_file, a:locale_key)
   let l:path = split(l:locale_key, '\.')
   let l:translation = s:parse_yaml(a:locale_file)
@@ -117,7 +117,7 @@ func! s:translation(locale_file, locale_key)
   endif
 endfunc
 
-func! s:translations(locale_key)
+func! s:translations(locale_key) abort
   let l:translations = []
   let l:locale_files = split(globpath(s:locale_directory(), '*'), '\n')
 
@@ -133,7 +133,7 @@ func! s:translations(locale_key)
   return l:translations
 endfunc
 
-func! s:line_number(locale_file, locale_key)
+func! s:line_number(locale_file, locale_key) abort
   let l:locale_key = s:full_locale_key(a:locale_file, a:locale_key)
   let l:path = split(l:locale_key, '\.')
   let l:lines = readfile(a:locale_file)
@@ -158,7 +158,7 @@ func! s:line_number(locale_file, locale_key)
   endif
 endfunc
 
-func! s:locale_directory()
+func! s:locale_directory() abort
   return split(s:current_path(), '/app')[0] . '/config/locales/'
 endfunc
 
@@ -166,7 +166,7 @@ func! s:current_path()
   return expand('%:p:h')
 endfunc
 
-func! s:locale_file()
+func! s:locale_file() abort
   let l:locale_directory = s:locale_directory()
   let l:locale_file = ''
 
@@ -185,7 +185,7 @@ func! s:locale_file()
   return l:locale_file
 endfunc
 
-func! s:locale_key(has_selection)
+func! s:locale_key(has_selection) abort
   if s:is_empty(a:has_selection)
     let l:locale_key = input('Locale key: ')
     redraw
@@ -195,7 +195,7 @@ func! s:locale_key(has_selection)
   end
 endfunc
 
-func! s:full_locale_key(locale_file, locale_key)
+func! s:full_locale_key(locale_file, locale_key) abort
   return fnamemodify(a:locale_file, ':t:r') . '.' . a:locale_key
 endfunc
 
@@ -209,7 +209,7 @@ func! s:selection()
   endtry
 endfunc
 
-func! s:open_locale(locale_file, position)
+func! s:open_locale(locale_file, position) abort
   let l:position = get(a:position, 0, g:i18n_rails_default_position)
   let l:split = get(s:positions, l:position, s:default_position)
   silent exec l:split . a:locale_file
@@ -221,7 +221,7 @@ func! s:goto_line(line_number)
   silent! normal! zO
 endfunc
 
-func! s:parse_yaml(path)
+func! s:parse_yaml(path) abort
   let l:result = {}
 ruby << EOF
   require 'yaml'
@@ -234,7 +234,7 @@ EOF
   return l:result
 endfunc
 
-func! s:apply_mappings()
+func! s:apply_mappings() abort
   if g:i18n_rails_use_default_mappings
     nnoremap <buffer> <silent> q :lclose<CR>
     for l:mapping in items(g:i18n_rails_mappings)
@@ -248,7 +248,7 @@ func! s:apply_mappings()
   end
 endfunc
 
-func! s:show_error(message, ...)
+func! s:show_error(message, ...) abort
   let l:message = a:message
   if !s:is_empty(a:000)
     for l:variable in keys(a:1)
@@ -258,7 +258,7 @@ func! s:show_error(message, ...)
   echohl ErrorMsg | echomsg l:message | echohl None
 endfunc
 
-func! s:is_empty(value)
+func! s:is_empty(value) abort
   let l:value = a:value
 
   if type(l:value) == type(1)
