@@ -65,13 +65,15 @@ OPTIONS                                                *vim-i18n-rails-options*
                                                   *g:i18n_rails_default_locale*
 
 Name of default locale.
-Default: ''
+
+  Default value: ''
 
                                                 *g:I18n_rails_default_position*
 
 Position where locale file will be opened.
-Possible value: 'current', 'top', 'bottom', 'left', 'right', 'tab'
-Default: 'tab'
+
+  Possible values: 'current', 'top', 'bottom', 'left', 'right', 'tab'
+  Default value: 'tab'
 
                                                         *g:i18n_rails_mappings*
 
@@ -88,28 +90,30 @@ Default mappings for all locales quickfix window.
   gv    open file in vertical split, keeping focus on the results window
   q     close the results window
 
-Default: >
-    {
-      \ 'o': '<CR>',
-      \ 'O': '<CR><C-W>p<C-W>c',
-      \ 'go': '<CR><C-W>p',
-      \ 't': '<C-W><CR><C-W>T',
-      \ 'T': '<C-W><CR><C-W>TgT<C-W>j',
-      \ 'h': '<C-W><CR><C-W>K',
-      \ 'H': '<C-W><CR><C-W>K<C-W>b',
-      \ 'v': '<C-W><CR><C-W>H<C-W>b<C-W>J<C-W>t',
-      \ 'gv': '<C-W><CR><C-W>H<C-W>b<C-W>J'
-      \ }
+  Default value: >
+      {
+        \ 'o': '<CR>',
+        \ 'O': '<CR><C-W>p<C-W>c',
+        \ 'go': '<CR><C-W>p',
+        \ 't': '<C-W><CR><C-W>T',
+        \ 'T': '<C-W><CR><C-W>TgT<C-W>j',
+        \ 'h': '<C-W><CR><C-W>K',
+        \ 'H': '<C-W><CR><C-W>K<C-W>b',
+        \ 'v': '<C-W><CR><C-W>H<C-W>b<C-W>J<C-W>t',
+        \ 'gv': '<C-W><CR><C-W>H<C-W>b<C-W>J'
+        \ }
 <
                                             *g:i18n_rails_use_default_mappings*
 
 Enable/disable default mappings.
-Default: 1
+
+  Default value: 1
 
                                         *g:i18n_rails_translations_autopreview*
 
 Enable/disable auto preview (open a file on 'j' or 'k' press).
-Default: 0
+
+  Default value: 0
 
 ===============================================================================
 CHANGELOG                                            *vim-i18n-rails-changelog*
