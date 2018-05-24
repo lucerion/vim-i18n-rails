@@ -68,7 +68,8 @@ Name of default locale.
 
 Position where locale file will be opened.
 
-  Possible values: 'current', 'top', 'bottom', 'left', 'right', 'tab'
+  Possible values: 'current', 'tab', 'top', 'bottom', 'left', 'right',
+  'top-full', 'bottom-full', 'left-full', 'right-full'
   Default value: 'tab'
 
                                                         *g:i18n_rails_mappings*

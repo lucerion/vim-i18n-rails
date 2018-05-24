@@ -7,12 +7,16 @@
 " ==============================================================
 
 let s:positions = {
-  \ 'current': 'edit',
-  \ 'top':     'leftabove split',
-  \ 'bottom':  'rightbelow split',
-  \ 'left':    'vertical leftabove split',
-  \ 'right':   'vertical rightbelow split',
-  \ 'tab':     'tab split'
+  \ 'current':      'edit',
+  \ 'tab':          'tab split',
+  \ 'top':          'leftabove split',
+  \ 'bottom':       'rightbelow split',
+  \ 'left':         'vertical leftabove split',
+  \ 'right':        'vertical rightbelow split',
+  \ 'top-full':     'topleft split',
+  \ 'bottom-full':  'botright split',
+  \ 'left-full':    'vertical topleft split',
+  \ 'right-full':   'vertical botright split'
   \ }
 
 let s:errors_messages = {
