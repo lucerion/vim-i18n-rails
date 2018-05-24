@@ -50,13 +50,6 @@ func! s:autocompletion(input, command_line, cursor_position) abort
   return filter(l:positions, 'v:val =~ a:input')
 endfunc
 
-func! s:init_commands()
-  comm! -nargs=0 -range I18nTranslation call i18n_rails#translation(<count>)
-  comm! -nargs=0 -range I18nAllTranslations call i18n_rails#translations(<count>)
-  comm! -nargs=? -range -complete=customlist,s:autocompletion I18nOpen call i18n_rails#open(<count>, <f-args>)
-endfunc
-
-augroup I18nRailsCommands
-  autocmd!
-  autocmd FileType ruby,eruby,haml,slim,javascript,coffee call s:init_commands()
-augroup END
+comm! -nargs=0 -range I18nTranslation call i18n_rails#translation(<count>)
+comm! -nargs=0 -range I18nAllTranslations call i18n_rails#translations(<count>)
+comm! -nargs=? -range -complete=customlist,s:autocompletion I18nOpen call i18n_rails#open(<count>, <f-args>)
