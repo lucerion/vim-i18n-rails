@@ -15,8 +15,8 @@ if !exists('g:i18n_rails_default_locale')
   let g:i18n_rails_default_locale = ''
 endif
 
-if !exists('g:i18n_rails_default_position')
-  let g:i18n_rails_default_position = 'tab'
+if !exists('g:i18n_rails_position')
+  let g:i18n_rails_position = 'tab'
 endif
 
 let s:default_mappings = {
@@ -45,11 +45,6 @@ if !exists('g:i18n_rails_translations_autopreview')
   let g:i18n_rails_translations_autopreview = 0
 endif
 
-func! s:autocompletion(input, command_line, cursor_position) abort
-  let l:positions = ['current', 'top', 'bottom', 'left', 'right', 'tab']
-  return filter(l:positions, 'v:val =~ a:input')
-endfunc
-
 comm! -nargs=0 -range I18nTranslation call i18n_rails#translation(<count>)
 comm! -nargs=0 -range I18nAllTranslations call i18n_rails#translations(<count>)
-comm! -nargs=? -range -complete=customlist,s:autocompletion I18nOpen call i18n_rails#open(<count>, <f-args>)
+comm! -nargs=? -range I18nOpen call i18n_rails#open(<count>, g:i18n_rails_position)

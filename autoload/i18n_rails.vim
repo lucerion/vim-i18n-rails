@@ -14,7 +14,6 @@ let s:positions = {
   \ 'right':   'vertical rightbelow split',
   \ 'tab':     'tab split'
   \ }
-let s:default_position = s:positions.tab
 
 let s:errors_messages = {
   \ 'directory':   "Directory '{directory}' does not exists!",
@@ -210,8 +209,7 @@ func! s:selection()
 endfunc
 
 func! s:open_locale(locale_file, position) abort
-  let l:position = get(a:position, 0, g:i18n_rails_default_position)
-  let l:split = get(s:positions, l:position, s:default_position)
+  let l:position = get(s:positions, a:position, s:positions.tab)
   silent exec l:split . a:locale_file
 endfunc
 
