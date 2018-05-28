@@ -47,4 +47,4 @@ endif
 
 comm! -nargs=0 -range I18nTranslation call i18n_rails#translation(<count>)
 comm! -nargs=0 -range I18nAllTranslations call i18n_rails#translations(<count>)
-comm! -nargs=? -range I18nOpen call i18n_rails#open(<count>, g:i18n_rails_position)
+comm! -nargs=? -range I18nOpen call i18n_rails#open(<count>, <q-mods>)
