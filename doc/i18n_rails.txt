@@ -53,20 +53,20 @@ COMMANDS                                              *vim-i18n-rails-commands*
 
                                                                     *:I18nOpen*
 
-:I18nOpen                     Open locale file on line with translation.
+:I18nOpen                     Open locale file on a line with translation.
 
 ===============================================================================
 OPTIONS                                                *vim-i18n-rails-options*
 
                                                   *g:i18n_rails_default_locale*
 
-Name of default locale.
+Name of the default locale.
 
   Default value: ''
 
                                                         *g:I18n_rails_position*
 
-Position where locale file will be opened.
+A position where locale file will be opened.
 
   current     - edit
   tab         - tabedit
@@ -89,14 +89,14 @@ Position where locale file will be opened.
 Default mappings for all locales window.
 
   o     open file
-  O     open file and close the results window
-  go    preview file (open file, keeping focus on the results window)
-  t     open file in new tab
-  T     open file in new tab without moving to it
-  h     open file in horizontal split
-  H     open file in horizontal split, keeping focus on the results window
-  v     open file in vertical split
-  gv    open file in vertical split, keeping focus on the results window
+  O     open a file and close results window
+  go    preview file (open file, keeping a focus on the results window)
+  t     open file in a new tab
+  T     open file in a new tab without moving to it
+  h     open file in a horizontal split
+  H     open file in a horizontal split, keeping a focus on the results window
+  v     open file in a vertical split
+  gv    open file in a vertical split, keeping a focus on the results window
   q     close the results window
 
   Default value: >
