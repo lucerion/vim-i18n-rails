@@ -31,10 +31,10 @@ func! i18n_rails#translation(has_selection) abort
 
   let l:translation = s:translation(l:locale_file, l:locale_key)
   if s:is_empty(l:translation)
-    call s:show_error(s:errors_messages.translation, { 'locale_key': l:locale_key })
-  else
-    echo l:translation
+    call s:show_error(s:errors_messages.translation, { 'locale_key': l:locale_key }) | return
   endif
+
+  echo l:translation
 endfunc
 
 func! i18n_rails#translations(has_selection) abort
@@ -50,12 +50,12 @@ func! i18n_rails#translations(has_selection) abort
 
   let l:translations = s:translations(l:locale_key)
   if s:is_empty(l:translations)
-    call s:show_error(s:errors_messages.translation, { 'locale_key': l:locale_key })
-  else
-    call setloclist(0, l:translations, 'r')
-    silent! exec 'lopen'
-    call s:apply_mappings()
-  endif
+    call s:show_error(s:errors_messages.translation, { 'locale_key': l:locale_key }) | return
+  end
+
+  call setloclist(0, l:translations, 'r')
+  silent! exec 'lopen'
+  call s:apply_mappings()
 endfunc
 
 func! i18n_rails#open(has_selection, mods) abort
@@ -76,11 +76,11 @@ func! i18n_rails#open(has_selection, mods) abort
 
   let l:line_number = s:line_number(l:locale_file, l:locale_key)
   if s:is_empty(l:line_number)
-    call s:show_error(s:errors_messages.translation, { 'locale_key': l:locale_key })
-  else
-    call s:open_locale(l:locale_file, a:mods)
-    call s:goto_line(l:line_number)
+    call s:show_error(s:errors_messages.translation, { 'locale_key': l:locale_key }) | return
   endif
+
+  call s:open_locale(l:locale_file, a:mods)
+  call s:goto_line(l:line_number)
 endfunc
 
 func! s:translation(locale_file, locale_key) abort
@@ -179,10 +179,10 @@ func! s:locale_key(has_selection) abort
   if s:is_empty(a:has_selection)
     let l:locale_key = input('Locale key: ')
     redraw
-    return l:locale_file
-  else
-    return s:selection()
+    return l:locale_key
   end
+
+  return s:selection()
 endfunc
 
 func! s:full_locale_key(locale_file, locale_key) abort
