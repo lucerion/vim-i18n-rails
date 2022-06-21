@@ -6,19 +6,6 @@
 " Licence:      BSD-3-Clause
 " ==============================================================
 
-let s:positions = {
-  \ 'current':      'edit',
-  \ 'tab':          'tabedit',
-  \ 'top':          'leftabove split',
-  \ 'bottom':       'rightbelow split',
-  \ 'left':         'leftabove vsplit',
-  \ 'right':        'rightbelow vsplit',
-  \ 'top-full':     'topleft split',
-  \ 'bottom-full':  'botright split',
-  \ 'left-full':    'topleft vsplit',
-  \ 'right-full':   'botright vsplit'
-  \ }
-
 let s:errors_messages = {
   \ 'directory':   "Directory '{directory}' does not exists!",
   \ 'file':        "File '{file}' does not exists!",
@@ -71,7 +58,7 @@ func! i18n_rails#translations(has_selection) abort
   endif
 endfunc
 
-func! i18n_rails#open(has_selection, split) abort
+func! i18n_rails#open(has_selection, mods) abort
   let l:locale_directory = s:locale_directory()
   if !isdirectory(l:locale_directory)
     call s:show_error(s:errors_messages.directory, { 'directory': l:locale_directory }) | return
@@ -91,7 +78,7 @@ func! i18n_rails#open(has_selection, split) abort
   if s:is_empty(l:line_number)
     call s:show_error(s:errors_messages.translation, { 'locale_key': l:locale_key })
   else
-    call s:open_locale(l:locale_file, a:split)
+    call s:open_locale(l:locale_file, a:mods)
     call s:goto_line(l:line_number)
   endif
 endfunc
@@ -212,17 +199,8 @@ func! s:selection()
   endtry
 endfunc
 
-func! s:open_locale(locale_file, split) abort
-  let l:position = s:position(a:split)
-  silent exec l:split . a:locale_file
-endfunc
-
-func! s:position(split)
-  if len(a:split)
-    return a:split . ' split'
-  endif
-
-  return get(s:positions, g:i18n_rails_position, s:positions.tab)
+func! s:open_locale(locale_file, mods) abort
+  silent exec a:mods . ' split ' . a:locale_file
 endfunc
 
 func! s:goto_line(line_number)
