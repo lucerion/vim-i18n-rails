@@ -2,7 +2,7 @@
 
 Author:               Alexander Skachko <alexander.skachko@gmail.com>
 Homepage:             https://github.com/lucerion/vim-i18n-rails
-Version:              0.2.0 (2017-01-02)
+Version:              0.3.0 (2022-06-21)
 Licence:              BSD-3-Clause (see vim-i18n-rails-license)
 
 ===============================================================================
@@ -110,14 +110,30 @@ Enable/disable auto preview (open a file on 'j' or 'k' press).
 ===============================================================================
 CHANGELOG                                            *vim-i18n-rails-changelog*
 
-0.2.0 (2017-07-14)~
+0.3.0 (2022-06-21)~
+
   Changes
+
+    * allow commands for the all file types
+    * removed position option from I18nOpen command
+      (use window split modes instead)
+    * removed default_position option
+
+  Fixes
+
+    * fix locale_key error
+
+0.2.0 (2017-07-14)~
+
+  Changes
+
     * code refactoring - use ruby for parsing yaml only
     * rename i18n_rails#goto_definition to i18n_rails#open command
     * rename g:i18n_rails_default_locale_file to g:i18n_rails_default_locale
     * fix g:i18n_rails_default_position usage
 
 0.1.0 (2017-01-02)~
+
   First release
 
 ===============================================================================
