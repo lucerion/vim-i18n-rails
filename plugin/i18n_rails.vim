@@ -15,10 +15,6 @@ if !exists('g:i18n_rails_default_locale')
   let g:i18n_rails_default_locale = ''
 endif
 
-if !exists('g:i18n_rails_position')
-  let g:i18n_rails_position = 'tab'
-endif
-
 let s:default_mappings = {
   \ 'o':  '<CR>',
   \ 'O':  '<CR><C-W>p<C-W>c',
