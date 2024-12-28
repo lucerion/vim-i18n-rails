@@ -16,30 +16,11 @@ License                                                |vim-i18n-rails-license|
 
 ===============================================================================
 INSTALL                                                *vim-i18n-rails-install*
-
-Vundle                                https://github.com/VundleVim/Vundle.vim
 >
-    Plugin 'lucerion/vim-i18n-rails'
-<
-Pathogen                                https://github.com/tpope/vim-pathogen
->
-    cd ~/.vim/bundle
+    mkdir -p ~/.vim/pack/lucerion/start
+    cd ~/.vim/pack/lucerion/start
     git clone https://github.com/lucerion/vim-i18n-rails
 <
-NeoBundle                             https://github.com/Shougo/neobundle.vim
->
-    NeoBundle 'lucerion/vim-i18n-rails'
-<
-vim-plug                                 https://github.com/junegunn/vim-plug
->
-    Plug 'lucerion/vim-i18n-rails'
-<
-Manual
->
-    git clone https://github.com/lucerion/vim-i18n-rails
-<
-    copy all of the files into your ~/.vim directory
-
 ===============================================================================
 COMMANDS                                              *vim-i18n-rails-commands*
 
